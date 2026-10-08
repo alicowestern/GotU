@@ -1,24 +1,23 @@
 'use client';
 
 import { useActionState } from 'react';
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { resetPassword } from "@/features/auth/actions";
+import { updatePassword } from "@/features/auth/actions";
 import { useFormStatus } from 'react-dom';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button className="w-full" type="submit" disabled={pending}>
-      {pending ? 'Sending...' : 'Send Reset Link'}
+      {pending ? 'Updating...' : 'Update Password'}
     </Button>
   );
 }
 
-export default function ForgotPasswordPage() {
-  const [state, action] = useActionState(resetPassword, null);
+export default function ResetPasswordPage() {
+  const [state, action] = useActionState(updatePassword, null);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/50 p-4">
@@ -27,31 +26,27 @@ export default function ForgotPasswordPage() {
           <div className="mx-auto w-10 h-10 rounded-full bg-primary flex items-center justify-center mb-4">
             <span className="text-primary-foreground font-bold">G</span>
           </div>
-          <CardTitle className="text-2xl">Reset password</CardTitle>
-          <CardDescription>Enter your email to receive a reset link</CardDescription>
+          <CardTitle className="text-2xl">Create new password</CardTitle>
+          <CardDescription>Enter your new password below.</CardDescription>
         </CardHeader>
         <form action={action}>
-          <CardContent>
+          <CardContent className="space-y-4">
             {state?.error && (
-              <div className="p-3 mb-4 text-sm text-destructive bg-destructive/10 rounded-md">
+              <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">
                 {state.error}
               </div>
             )}
-            {state?.success && (
-              <div className="p-3 mb-4 text-sm text-green-600 bg-green-50 rounded-md">
-                {state.message}
-              </div>
-            )}
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <Input id="email" name="email" type="email" placeholder="m@example.com" required />
+              <label htmlFor="password" className="text-sm font-medium">New Password</label>
+              <Input id="password" name="password" type="password" required minLength={8} />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="confirmPassword" className="text-sm font-medium">Confirm New Password</label>
+              <Input id="confirmPassword" name="confirmPassword" type="password" required minLength={8} />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <SubmitButton />
-            <div className="text-sm text-center text-muted-foreground">
-              Remember your password? <Link href="/login" className="text-primary hover:underline">Log in</Link>
-            </div>
           </CardFooter>
         </form>
       </Card>
