@@ -18,10 +18,9 @@ export default function UserDashboardLayout({
             <span>GotU</span>
           </div>
           <nav className="space-y-2">
-            <Link href="/dashboard" className="block px-3 py-2 rounded-md bg-secondary text-secondary-foreground font-medium">Overview</Link>
+            <Link href="/dashboard" className="block px-3 py-2 rounded-md hover:bg-muted font-medium">Overview</Link>
+            <Link href="/dashboard/live" className="block px-3 py-2 rounded-md bg-primary/10 text-primary font-semibold">Live Map</Link>
             <Link href="/dashboard/invitations" className="block px-3 py-2 rounded-md text-muted-foreground hover:bg-muted">My Invitations</Link>
-            <Link href="/dashboard/sessions" className="block px-3 py-2 rounded-md text-muted-foreground hover:bg-muted">Active Sessions</Link>
-            <Link href="/dashboard/map" className="block px-3 py-2 rounded-md text-muted-foreground hover:bg-muted">Map</Link>
             <Link href="/dashboard/settings" className="block px-3 py-2 rounded-md text-muted-foreground hover:bg-muted">Settings</Link>
           </nav>
         </div>
