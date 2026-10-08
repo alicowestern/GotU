@@ -109,7 +109,7 @@ export default function Home() {
       </main>
 
       <footer className="py-8 px-6 border-t text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} GotU. All rights reserved.</p>
+        <p>&copy; 2026 GotU. All rights reserved.</p>
       </footer>
     </div>
   );
