@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GotU - Share your location. Stay in control.
 
-## Getting Started
+## Product Overview
+GotU is a modern, consent-based live GPS location-sharing SaaS platform. It allows registered users to request live location sharing from friends or family through secure invitation links. Recipients can voluntarily share their GPS location without registering.
 
-First, run the development server:
+## Roles and Permissions
+1. **Super Admin**: Manages users, sharing sessions, and platform security. May view authorized active location sessions for legitimate oversight.
+2. **Registered User**: Can generate secure location-sharing invitations and view live GPS locations only for their own authorized sharing sessions.
+3. **Recipient (Guest)**: Does not need an account. Must explicitly consent before GPS permission is requested. Can choose 15, 30, or 60 minutes of sharing and stop sharing at any time.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technology Stack
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS & shadcn/ui
+- Supabase (PostgreSQL, Auth, Realtime)
+- Leaflet + OpenStreetMap
+- Zod, Vitest, Playwright
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
+- `src/app`: Next.js App Router pages (public, auth, user dashboard, admin dashboard, share token)
+- `src/components`: UI components (shadcn/ui), layout, landing, dashboard, maps, sharing
+- `src/features`: Feature-based business logic (auth, users, invitations, sessions, etc.)
+- `src/lib`: Utilities, validations, Supabase client
+- `src/hooks`, `src/types`, `src/config`: Custom React hooks, TS types, config files
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation Instructions
+1. Clone the repository
+2. Run `npm install`
+3. Copy `.env.example` to `.env.local` and fill in the values
+4. Run `npm run dev` to start the development server
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development Commands
+- `npm run dev`: Start local development server
+- `npm run build`: Build for production
+- `npm run lint`: Run ESLint
+- `npx tsc --noEmit`: Run TypeScript compiler check
+- `npm run test`: Run Vitest tests
 
-## Learn More
+## Environment Configuration
+See `.env.example` for required environment variables. Do not commit actual secrets to source control.
 
-To learn more about Next.js, take a look at the following resources:
+## Security Principles
+- Location sharing is voluntary and requires explicit consent.
+- Expired sessions do not provide access to coordinates.
+- No historical location trails are retained in the planned MVP.
+- Admin access is disclosed to recipients before consent.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Task 1 Completion Summary
+Initialized the Next.js project with Tailwind CSS and shadcn/ui. Created the scalable folder structure, landing page, authentication UI shells, user and admin dashboard shells, and the recipient consent UI. No business logic or actual Supabase connections have been implemented yet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Implementation Phases
+- Task 2: Supabase authentication and database schema setup.
+- Task 3: Invitation generation and Realtime location sharing with Leaflet.
+- Task 4: Security enhancements and admin oversight tools.
