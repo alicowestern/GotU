@@ -29,9 +29,9 @@ export default function Home() {
         </nav>
 
         <div className="flex items-center space-x-3">
-          <Link href="/login">
+          <Link href="/admin">
             <Button className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20 px-6 font-semibold transition-all">
-              Login <ArrowRight className="w-4 h-4 ml-1.5" />
+              Login to Admin <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>
           </Link>
         </div>

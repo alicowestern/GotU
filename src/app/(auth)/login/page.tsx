@@ -51,8 +51,20 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <SubmitButton />
-            <div className="text-sm text-center text-muted-foreground">
-              Don&apos;t have an account? <Link href="/register" className="text-primary hover:underline">Sign up</Link>
+            
+            <div className="relative w-full my-2">
+              <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-200" /></div>
+              <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-slate-400 font-semibold">Or Quick Access</span></div>
+            </div>
+
+            <Link href="/admin" className="w-full">
+              <Button type="button" variant="outline" className="w-full border-blue-200 text-blue-700 hover:bg-blue-50 font-bold">
+                ⚡ Direct Admin Access (No Login Prompt)
+              </Button>
+            </Link>
+
+            <div className="text-sm text-center text-muted-foreground pt-2">
+              Don&apos;t have an account? <Link href="/register" className="text-primary hover:underline font-semibold">Sign up</Link>
             </div>
           </CardFooter>
         </form>
